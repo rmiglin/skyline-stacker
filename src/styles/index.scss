@@ -64,8 +64,6 @@
     letter-spacing: 0.05em;
 }
 
-
-
 .footer-div {
     color: black;
     text-decoration: none;
@@ -111,20 +109,38 @@ a {
 canvas {
     border: 2px solid black;
     height: 700px;
+    width: 800px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.tower-canvas {
+html {
+    overflow-x: hidden;
+}
+
+.tower-img {
+    border: 2px solid black;
+    height: 700px;
+    margin-left: 10px;
+    margin-right: 10px;
     width: 300px;
 }
 
-.main-canvas {
-    width: 700px;
+
+.scores-div {
+    border: 2px solid black;
+    height: 700px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 300px;
 }
 
-.scores-canvas {
-    width: 300px;
+.current-score-div {
+    margin-left: 5px;
+}
+
+.high-score-div {
+    margin-left: 5px;
 }
 
 .canvas-div {
@@ -132,7 +148,9 @@ canvas {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    overflow-x: hidden;
+    height: 720px;
+    width: 100%;
+    overflow: scroll;
 }
 
 
