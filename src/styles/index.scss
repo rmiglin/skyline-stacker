@@ -82,7 +82,7 @@ footer {
     width: 100%;
     position: absolute;
     bottom: 0;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 i {
@@ -114,7 +114,15 @@ canvas {
     margin-right: 10px;
 }
 
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+
 html {
+    height: 100vh;
+    width: 100%;
     overflow-x: hidden;
 }
 
@@ -150,7 +158,7 @@ html {
     justify-content: center;
     height: 720px;
     width: 100%;
-    overflow: scroll;
+    overflow-x: hidden;
 }
 
 
