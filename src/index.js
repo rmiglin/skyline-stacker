@@ -14,17 +14,24 @@ import "./styles/index.scss";
 // 3. send down new other height rectangle
 // 4. get it to stick 
 
-
 // canvas variables
 var canvas = document.getElementById('canvas');
 const ctx = canvas.getContext("2d");
-
-// ball variables
-const ball_radius = 10;
-var x = Math.floor(Math.random() * canvas.width) + ball_radius;
-var y = canvas.height - 200;
 var dy = 4;
-var ballStacked = false;
+
+// working image
+var imgPath = '../dist/images/statue-of-liberty.png';
+
+var imgObj = new Image();
+
+imgObj.src = imgPath;
+
+var x = 0;
+var y = 0;
+
+//imgObj.onload = function() {
+//     ctx.drawImage(imgObj, x, y);
+//}
 
 // rectangle variables
 // Rect 1
@@ -82,14 +89,6 @@ function keyUpHandler(e) {
 // stack variables:
 var stackHeight = paddleHeight;
 
-function drawBall() {
-    ctx.beginPath();
-    ctx.arc(x, y, 10, 0, Math.PI*2);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath();
-}
-
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleLeftX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
@@ -129,29 +128,10 @@ function draw() {
   drawRect1();
   drawRect2();
   drawRect3();
-  drawBall();
   drawPaddle();
-
-  //Ball movement
-  if (y > canvas.height) {
-    x = Math.floor(Math.random() * canvas.width) + ball_radius;
-    y = canvas.height - 200;
-  }
-
-  if (
-    y + ball_radius >= canvas.height - stackHeight &&
-    x >= paddleLeftX &&
-    x <= paddleRightX
-  ) {
-    x = paddleX;
-    if (!ballStacked) {
-      y = canvas.height - stackHeight - ball_radius;
-      stackHeight += ball_radius * 2;
-      ballStacked = true;
-    }
-  } else {
-    y += dy;
-  }
+  // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+  //ctx.drawImage(imgObj, 50, 300, 200, 100, x, y, 50, 25);
+  //ctx.drawImage(imgObj, 50, 300, 200, 100, x, y, 50, 25);
 
   //Rectangle 1 movement
   if (rectY1 > canvas.height) {
