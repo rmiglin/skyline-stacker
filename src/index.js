@@ -9,16 +9,47 @@ import "./styles/index.scss";
 // user class (health, current score)
 // firebase -- high score
 
+// 1. change ball to rectangle
+// 2. once rectangle hits paddle, link it up
+// 3. send down new other height rectangle
+// 4. get it to stick 
+
 
 // canvas variables
 var canvas = document.getElementById('canvas');
 const ctx = canvas.getContext("2d");
 
 // ball variables
-var x = Math.floor(Math.random() * canvas.width) + 1;
-var y = canvas.height - 200;
 const ball_radius = 10;
+var x = Math.floor(Math.random() * canvas.width) + ball_radius;
+var y = canvas.height - 200;
 var dy = 4;
+var ballStacked = false;
+
+// rectangle variables
+// Rect 1
+var width1 = 40;
+var height1 = 20;
+var rectX1 = Math.floor(Math.random() * canvas.width) + width1/2;
+var rectY1 = canvas.height - 200;
+var rect1Stacked = false;
+
+// rectangle variables
+// Rect 2
+var width2 = 30;
+var height2 = 10;
+var rectX2 = Math.floor(Math.random() * canvas.width) + width2/2;
+var rectY2 = canvas.height - 200;
+var rect2Stacked = false;
+
+// rectangle variables
+// Rect 3
+var width3 = 50;
+var height3 = 15;
+var rectX3 = Math.floor(Math.random() * canvas.width) + width3/2;
+var rectY3 = canvas.height - 200;
+var rect3Stacked = false;
+
 
 // paddle variables
 var paddleHeight = 10;
@@ -48,6 +79,9 @@ function keyUpHandler(e) {
   }
 }
 
+// stack variables:
+var stackHeight = paddleHeight;
+
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI*2);
@@ -64,41 +98,141 @@ function drawPaddle() {
     ctx.closePath();
 }
 
+function drawRect1() {
+    ctx.beginPath();
+    ctx.rect(rectX1, rectY1, width1, height1);
+    ctx.fillStyle = "blue";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawRect2() {
+    ctx.beginPath();
+    ctx.rect(rectX2, rectY2, width2, height2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function drawRect3() {
+    ctx.beginPath();
+    ctx.rect(rectX3, rectY3, width3, height3);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+}
+
+
+
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBall();
-    drawPaddle();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawRect1();
+  drawRect2();
+  drawRect3();
+  drawBall();
+  drawPaddle();
 
-    if (y > canvas.height){
-        x = Math.floor(Math.random() * canvas.width) + 1;
-        y = canvas.height - 200;
-    }
+  //Ball movement
+  if (y > canvas.height) {
+    x = Math.floor(Math.random() * canvas.width) + ball_radius;
+    y = canvas.height - 200;
+  }
 
-    if (y + ball_radius === canvas.height - paddleHeight && (x >= paddleLeftX && x <= paddleRightX)){
-        x = paddleX;
-    } else {   
-        y += dy;
+  if (
+    y + ball_radius >= canvas.height - stackHeight &&
+    x >= paddleLeftX &&
+    x <= paddleRightX
+  ) {
+    x = paddleX;
+    if (!ballStacked) {
+      y = canvas.height - stackHeight - ball_radius;
+      stackHeight += ball_radius * 2;
+      ballStacked = true;
     }
+  } else {
+    y += dy;
+  }
 
-    if (rightPressed) {
-        paddleX += 7;
-        if (paddleRightX >= canvas.width) {
-            paddleX = canvas.width - paddleWidth/2;
-        }
-    } else if (leftPressed) {
-        paddleX -= 7;
-        if (paddleLeftX <= 0) {
-            paddleX = paddleWidth/2;
-        }
+  //Rectangle 1 movement
+  if (rectY1 > canvas.height) {
+    rectX1 = Math.floor(Math.random() * canvas.width) + width1 / 2;
+    rectY1 = canvas.height - 200;
+  }
+
+  if (
+    rectY1 + height1 >= canvas.height - stackHeight &&
+    //rectY1 + height1 <= (canvas.height - stackHeight + 5) &&
+    rectX1 + width1 / 2 >= paddleLeftX &&
+    rectX1 + width1 / 2 <= paddleRightX
+  ) {
+    rectX1 = paddleX - width1 / 2;
+    if (!rect1Stacked) {
+      rectY1 = canvas.height - stackHeight - height1;
+      stackHeight += height1;
+      rect1Stacked = true;
     }
-    paddleLeftX = paddleX - paddleWidth / 2;
-    paddleRightX = paddleX + paddleWidth / 2;
-    // console.log(`x is: ${x}`);
-    // console.log(`y is: ${y}`);
-    // console.log(`paddleX is ${paddleX}`);
-    // console.log(`paddleLeftX is ${paddleLeftX}`);
-    // console.log(`paddleRightX is ${paddleRightX}`);
-    
+  } else {
+    rectY1 += dy;
+  }
+
+  //Rectangle 2 movement
+  if (rectY2 > canvas.height) {
+    rectX2 = Math.floor(Math.random() * canvas.width) + width2 / 2;
+    rectY2 = canvas.height - 200;
+  }
+
+  if (
+    rectY2 + height2 >= canvas.height - stackHeight &&
+    //rectY2 + height2 <= canvas.height - stackHeight + 5 &&
+    rectX2 + width2 / 2 >= paddleLeftX &&
+    rectX2 + width2 / 2 <= paddleRightX
+  ) {
+    rectX2 = paddleX - width2 / 2;
+    if (!rect2Stacked) {
+      rectY2 = canvas.height - stackHeight - height2;
+      stackHeight += height2;
+      rect2Stacked = true;
+    }
+  } else {
+    rectY2 += dy;
+  }
+
+  //Rectangle 3 movement
+  if (rectY3 > canvas.height) {
+    rectX3 = Math.floor(Math.random() * canvas.width) + width3 / 2;
+    rectY3 = canvas.height - 200;
+  }
+
+  if (
+    rectY3 + height3 >= canvas.height - stackHeight &&
+    //rectY3 + height3 <= canvas.height - stackHeight + 5 &&
+    rectX3 + width3 / 2 >= paddleLeftX &&
+    rectX3 + width3 / 2 <= paddleRightX
+  ) {
+    rectX3 = paddleX - width3 / 2;
+    if (!rect3Stacked) {
+      rectY3 = canvas.height - stackHeight - height3;
+      stackHeight += height3;
+      rect3Stacked = true;
+    }
+  } else {
+    rectY3 += dy;
+  }
+
+  //takes in keyboard inputs
+  if (rightPressed) {
+    paddleX += 7;
+    if (paddleRightX >= canvas.width) {
+      paddleX = canvas.width - paddleWidth / 2;
+    }
+  } else if (leftPressed) {
+    paddleX -= 7;
+    if (paddleLeftX <= 0) {
+      paddleX = paddleWidth / 2;
+    }
+  }
+  paddleLeftX = paddleX - paddleWidth / 2;
+  paddleRightX = paddleX + paddleWidth / 2;
 }
 
 setInterval(draw, 30);
