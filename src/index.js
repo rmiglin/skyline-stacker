@@ -1,5 +1,6 @@
 import "./styles/index.scss";
-
+const FallingBlock = require('./scripts/falling_blocks');
+const Paddle = require('./scripts/paddle');
 
 // create block class 
 // create paddle class 
@@ -29,9 +30,6 @@ imgObj.src = imgPath;
 var x = 0;
 var y = 0;
 
-//imgObj.onload = function() {
-//     ctx.drawImage(imgObj, x, y);
-//}
 
 // rectangle variables
 // Rect 1
@@ -72,17 +70,17 @@ document.addEventListener("keyup", keyUpHandler, false);
 
 function keyDownHandler(e) {
   if (e.key == "Right" || e.key == "ArrowRight") {
-    rightPressed = true;
+    paddle.rightPressed = true;
   } else if (e.key == "Left" || e.key == "ArrowLeft") {
-    leftPressed = true;
+    paddle.leftPressed = true;
   }
 }
 
 function keyUpHandler(e) {
   if (e.key == "Right" || e.key == "ArrowRight") {
-    rightPressed = false;
+    paddle.rightPressed = false;
   } else if (e.key == "Left" || e.key == "ArrowLeft") {
-    leftPressed = false;
+    paddle.leftPressed = false;
   }
 }
 
@@ -121,17 +119,31 @@ function drawRect3() {
     ctx.closePath();
 }
 
-
+let rectA = new FallingBlock(canvas);
+let rectB = new FallingBlock(canvas);
+let rectC = new FallingBlock(canvas);
+let rectD = new FallingBlock(canvas);
+let paddle = new Paddle(canvas);
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  rectA.draw(ctx);
+  rectB.draw(ctx);
+  rectC.draw(ctx);
+  rectD.draw(ctx);
+  paddle.draw(ctx, canvas);
+
+  rectA.drop(paddle, canvas);
+  rectB.drop(paddle, canvas);
+  rectC.drop(paddle, canvas);
+  rectD.drop(paddle, canvas);
+
+  /*
   drawRect1();
   drawRect2();
   drawRect3();
   drawPaddle();
-  // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-  //ctx.drawImage(imgObj, 50, 300, 200, 100, x, y, 50, 25);
-  //ctx.drawImage(imgObj, 50, 300, 200, 100, x, y, 50, 25);
 
   //Rectangle 1 movement
   if (rectY1 > canvas.height) {
@@ -163,7 +175,6 @@ function draw() {
 
   if (
     rectY2 + height2 >= canvas.height - stackHeight &&
-    //rectY2 + height2 <= canvas.height - stackHeight + 5 &&
     rectX2 + width2 / 2 >= paddleLeftX &&
     rectX2 + width2 / 2 <= paddleRightX
   ) {
@@ -185,7 +196,6 @@ function draw() {
 
   if (
     rectY3 + height3 >= canvas.height - stackHeight &&
-    //rectY3 + height3 <= canvas.height - stackHeight + 5 &&
     rectX3 + width3 / 2 >= paddleLeftX &&
     rectX3 + width3 / 2 <= paddleRightX
   ) {
@@ -198,21 +208,37 @@ function draw() {
   } else {
     rectY3 += dy;
   }
+  */
 
-  //takes in keyboard inputs
-  if (rightPressed) {
-    paddleX += 7;
-    if (paddleRightX >= canvas.width) {
-      paddleX = canvas.width - paddleWidth / 2;
+  if (paddle.rightPressed) {
+    paddle.X += 7;
+    if (paddle.rightX >= canvas.width) {
+      paddle.X = canvas.width - paddleWidth / 2;
     }
-  } else if (leftPressed) {
-    paddleX -= 7;
-    if (paddleLeftX <= 0) {
-      paddleX = paddleWidth / 2;
+  } else if (paddle.leftPressed) {
+    paddle.X -= 7;
+    if (paddle.leftX <= 0) {
+      paddle.X = paddle.width / 2;
     }
   }
-  paddleLeftX = paddleX - paddleWidth / 2;
-  paddleRightX = paddleX + paddleWidth / 2;
+
+  paddle.leftX = paddle.X - paddle.width / 2;
+  paddle.rightX = paddle.X + paddle.width / 2;
+
+  //takes in keyboard inputs
+  // if (rightPressed) {
+  //   paddleX += 7;
+  //   if (paddleRightX >= canvas.width) {
+  //     paddleX = canvas.width - paddleWidth / 2;
+  //   }
+  // } else if (leftPressed) {
+  //   paddleX -= 7;
+  //   if (paddleLeftX <= 0) {
+  //     paddleX = paddleWidth / 2;
+  //   }
+  // }
+  // paddleLeftX = paddleX - paddleWidth / 2;
+  // paddleRightX = paddleX + paddleWidth / 2;
 }
 
 setInterval(draw, 30);
