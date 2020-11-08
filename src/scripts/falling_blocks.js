@@ -1,12 +1,13 @@
 const COLORS = ["blue", "green", "red", "yellow", "purple", "orange"]
-const DY = 4;
 
 class FallingBlock {
     constructor(canvas) {
+        this.velocity = 4;
+        this.dropHeight = Math.floor(Math.random() * (180) + canvas.height);
         this.height = Math.floor(Math.random() * (11) + 10);
         this.width = Math.floor(Math.random() * (21) + 20);
         this.rectX = this.randomStartX(canvas);
-        this.rectY = canvas.height - 200;
+        this.rectY = canvas.height - this.dropHeight;
         this.stacked = false;
         this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
 
@@ -22,13 +23,11 @@ class FallingBlock {
     }
 
     drop(paddle, canvas) {
-        //console.log("drop!");
+
         if(this.rectY > canvas.height) {
             this.rectX = this.randomStartX(canvas);
-            this.rectY = canvas.height - 200;
-            //console.log("here");
+            this.rectY = canvas.height - this.dropHeight;
         }
-
         if (
             this.rectY + this.height >= canvas.height - paddle.stackHeight &&
             this.rectX + this.width / 2 >= paddle.leftX &&
@@ -41,7 +40,7 @@ class FallingBlock {
                 this.stacked = true;
             } 
         } else {
-            this.rectY += DY;
+            this.rectY += this.velocity;
         }
 
         console.log(this.rectX);
@@ -50,7 +49,7 @@ class FallingBlock {
     }
 
     randomStartX(canvas) {
-        return Math.floor(Math.random() * canvas.width) + this.width / 2;
+        return Math.floor(Math.random() * canvas.width) - this.width / 2;
     }
 }
 
