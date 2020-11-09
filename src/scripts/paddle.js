@@ -1,7 +1,7 @@
 class Paddle{
     constructor(canvas){
-        this.height = 10;
-        this.width = 75;
+        this.height = 12;
+        this.width = 80;
         this.stackHeight = this.height;
         this.X = (canvas.width - this.width) / 2;
         this.leftX = this.X - this.width / 2;

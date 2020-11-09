@@ -12,6 +12,8 @@ const Paddle = require('./scripts/paddle');
 
 // canvas variables
 var canvas = document.getElementById('canvas');
+canvas.width = 400;
+canvas.height = 350;
 const ctx = canvas.getContext("2d");
 
 // working image
@@ -41,32 +43,26 @@ function keyUpHandler(e) {
   }
 }
 
-let rectA = new FallingBlock(canvas);
-let rectB = new FallingBlock(canvas);
-let rectC = new FallingBlock(canvas);
-let rectD = new FallingBlock(canvas);
+let blocks = [];
+var i;
+for (i = 0; i < 10; i ++) {
+  blocks.push(new FallingBlock(canvas));
+}
 let paddle = new Paddle(canvas);
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  rectA.draw(ctx);
-  rectB.draw(ctx);
-  rectC.draw(ctx);
-  rectD.draw(ctx);
+  blocks.forEach(block => block.draw(ctx));
   paddle.draw(ctx, canvas);
 
-  rectA.drop(paddle, canvas);
-  rectB.drop(paddle, canvas);
-  rectC.drop(paddle, canvas);
-  rectD.drop(paddle, canvas);
-
+  blocks.forEach(block => block.drop(paddle, canvas));
 
   paddle.move(canvas);
 
 }
 
-setInterval(draw, 30);
+setInterval(draw, 20);
 
 console.log("canvas is running");
 

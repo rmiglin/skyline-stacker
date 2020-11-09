@@ -126,12 +126,21 @@ html {
     overflow-x: hidden;
 }
 
-.tower-img {
+.img-div {
     border: 2px solid black;
     height: 700px;
     margin-left: 10px;
     margin-right: 10px;
     width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.tower-img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 
