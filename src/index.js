@@ -45,7 +45,7 @@ function keyUpHandler(e) {
 
 let blocks = [];
 var i;
-for (i = 0; i < 10; i ++) {
+for (i = 0; i < 4; i ++) {
   blocks.push(new FallingBlock(canvas));
 }
 let paddle = new Paddle(canvas);
