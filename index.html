@@ -23,7 +23,15 @@
             <h1 class="stacker-title">Stacker</h1>
         </div>
 
-        <i class="fa fa-question-circle"></i>
+        <button class ="game-info" id="game-info"><i class="fa fa-question-circle"></i></button>
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <span id="close"><i class="fa fa-times-circle"></i></span>
+                <p>Stack up skyline pieces while avoiding the pesky pigeons</p>
+            </div>
+
+        </div>
     </div>
 
     <div class="canvas-div">
@@ -47,19 +55,23 @@
             <img id="esb-bottom" class="img-block" src="./dist/images/empire-state-building-pieces/esb-bottom.png">
         </div>
         <canvas id="canvas"></canvas>
-        <script src="./dist/main.js"></script>
         <!-- <script src="./src/index.js"></script> -->
-
+        
         <div class="scores-div">
             <h1>Health: </h1>
             <h1>Time: </h1>
+            <h1>Level: </h1>
             <div class="current-score-div">
                 <h1>Score:</h1>
             </div>
-            <duv class="high-score-div">
+            <div class="high-score-div">
                 <h1>High score:</h1>
-            </duv>
+            </div>
+            <div class="start-div">
+                <button id="start" class="start-button" >Start</button>
+            </div>
         </div>
+        <script src="./dist/main.js"></script>
     </div>
 
     <footer>

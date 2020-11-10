@@ -22,7 +22,7 @@ class Game{
     constructor(){
         this.time;
         this.health;
-        this.level = LEVELS[0];
+        this.level = LEVELS[1];
         this.score;
         this.high_score;
         this.canvas = document.getElementById('canvas');
@@ -34,7 +34,6 @@ class Game{
     }
 
     play(){
-
         document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
         document.addEventListener("keyup", this.keyUpHandler.bind(this), false);
         let blocks = this.createBlocks();
@@ -67,23 +66,28 @@ class Game{
 
     keyDownHandler(e) {
         if (e.key == "Right" || e.key == "ArrowRight") {
-            console.log(this.paddle);
+            //console.log(this.paddle);
             this.paddle.rightPressed = true;
         } else if (e.key == "Left" || e.key == "ArrowLeft") {
-            console.log(this.paddle);
+            //console.log(this.paddle);
             this.paddle.leftPressed = true;
         }
     }
 
     keyUpHandler(e) {
         if (e.key == "Right" || e.key == "ArrowRight") {
-            console.log(this.paddle);
+            //console.log(this.paddle);
             this.paddle.rightPressed = false;
         } else if (e.key == "Left" || e.key == "ArrowLeft") {
-            console.log(this.paddle);
+            //console.log(this.paddle);
             this.paddle.leftPressed = false;
         }
     }
+
+    allStacked() {
+
+    }
+
 }
 
 module.exports = Game;

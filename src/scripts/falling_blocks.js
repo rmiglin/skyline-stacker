@@ -10,8 +10,6 @@ class FallingBlock {
         this.rectX = this.randomStartX(canvas);
         this.rectY = canvas.height - this.dropHeight;
         this.stacked = false;
-        //this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-        //this.level = LEVELS[Math.floor(Math.random() * LEVELS.length)];
         this.level = level;
         this.image = this.level.pop();
     }

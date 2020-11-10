@@ -97,9 +97,17 @@ i {
 .fa-question-circle {
     color:black;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 40px;
     margin-top: 30px;
     margin-right: 30px;
+}
+
+.fa-times-circle {
+    color:black;
+    text-decoration: none;
+    font-size: 30px;
+    margin-top: 30px;
+    margin-right: 30px;    
 }
 
 a {
@@ -177,6 +185,65 @@ html {
     height: 720px;
     width: 100%;
     overflow-x: hidden;
+}
+
+.start-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.start-button {
+    color:black;
+    text-decoration: none;
+    font-size: 30px;
+    margin-top: 30px;
+    margin-right: 30px;   
+}
+
+.game-info {
+    background: transparent;
+    border: none;
+}
+
+.game-info:focus {
+    outline: 0;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: none;
+  width: 60%; 
+}
+
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 
