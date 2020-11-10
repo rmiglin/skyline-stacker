@@ -1,6 +1,16 @@
 import "./styles/index.scss";
 const Game = require('./scripts/game');
 
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 300;
+
+function setTime() {
+  totalSeconds -= 1;
+  secondsLabel.innerHTML = totalSeconds % 60;
+  minutesLabel.innerHTML = parseInt(totalSeconds / 60);
+}
+
 // create block class 
 // create paddle class 
 // create p+b class (new collision rules)
@@ -11,7 +21,10 @@ const Game = require('./scripts/game');
 let game = new Game();
 var start = document.getElementById("start");
 
-start.onclick = function(){game.play()};
+start.onclick = function(){
+  game.play();
+  setInterval(setTime, 1000);
+};
 
 var modal = document.getElementById("myModal");
 var game_info = document.getElementById("game-info");
