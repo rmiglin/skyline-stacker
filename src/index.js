@@ -14,10 +14,10 @@ var start = document.getElementById("start");
 start.onclick = function(){game.play()};
 
 var modal = document.getElementById("myModal");
-var button = document.getElementById("game-info");
+var game_info = document.getElementById("game-info");
 var close = document.getElementById("close");
 
-button.onclick = function() {
+game_info.onclick = function() {
   modal.style.display = "block";
 }
 
