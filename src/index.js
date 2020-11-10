@@ -1,6 +1,7 @@
 import "./styles/index.scss";
 const FallingBlock = require('./scripts/falling_blocks');
 const Paddle = require('./scripts/paddle');
+const Game = require('./scripts/game');
 
 // create block class 
 // create paddle class 
@@ -10,18 +11,13 @@ const Paddle = require('./scripts/paddle');
 // user class (health, current score)
 // firebase -- high score
 
+
+/*
 // canvas variables
 var canvas = document.getElementById('canvas');
 canvas.width = 400;
 canvas.height = 350;
 const ctx = canvas.getContext("2d");
-
-// working image
-var imgPath = '../dist/images/statue-of-liberty.png';
-
-var imgObj = new Image();
-
-imgObj.src = imgPath;
 
 
 document.addEventListener("keydown", keyDownHandler, false);
@@ -63,6 +59,12 @@ function draw() {
 }
 
 setInterval(draw, 20);
+*/
+let game = new Game();
+// document.addEventListener("keydown", game.keyDownHandler, false);
+// document.addEventListener("keyup", game.keyUpHandler, false);
+game.play();
+// setInterval(game.draw(), 20);
 
 console.log("canvas is running");
 
