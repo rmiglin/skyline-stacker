@@ -84,10 +84,17 @@
     transition: all .2s ease-in-out;
 }
 
+.fa-volume-down:hover,
+.fa-volume-up:hover,
+.fa-volume-mute:hover,
+.fa-play:hover,
+.fa-pause:hover,
 .fa-github:hover,
 .fa-linkedin:hover,
-.fa-angellist:hover {
+.fa-angellist:hover,
+.fa-times-circle:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 .fa-heart {
@@ -122,12 +129,18 @@ i {
     margin-bottom: 20px;
 }
 
+.fa-volume-down,
+.fa-volume-up,
+.fa-volume-mute,
+.fa-play,
+.fa-pause,
 .fa-times-circle {
     color:black;
     text-decoration: none;
     font-size: 30px;
     margin-top: 30px;
-    margin-right: 30px;    
+    margin-right: 30px; 
+    transition: all .2s ease-in-out;   
 }
 
 a {
@@ -187,6 +200,7 @@ html {
     margin-left: 10px;
     margin-right: 10px;
     padding-left: 10px;
+    padding-right: 10px;
     width: 300px;
 }
 
@@ -283,5 +297,55 @@ html {
   text-decoration: none;
   cursor: pointer;
 }
+
+.audio-player{
+    display: hidden;
+}
+
+.audio-controls-div{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: black;
+    background-color: black;
+    border-radius: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.icon-div {
+    display: wrap;
+    flex-direction: column;
+    flex-wrap: wrap;
+    vertical-align: middle;
+}
+
+.fa-volume-down,
+.fa-volume-up,
+.fa-volume-mute,
+.fa-play,
+.fa-pause{
+    color: white;
+    font-size: 20px;
+    margin-left: 1px;
+    margin-right: 1px;
+    transform: translate(0px, -10px);
+}
+
+.fa-volume-down:before,
+.fa-volume-up:before,
+.fa-volume-mute:before,
+.fa-play:before,
+.fa-pause:before{
+    text-align: center;
+    justify-self: center;
+    align-content: center;
+    
+}
+
+
 
 

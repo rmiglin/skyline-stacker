@@ -76,13 +76,27 @@
             <div class="start-div">
                 <button id="start" class="start-button" >Start</button>
             </div>
+            <audio id="audio-player" autoplay loop>
+                <source src="./dist/audio/new_york_8bit.mp3" type="audio/mpeg">
+            </audio>
+            <div class="audio-controls-div">
+                <div class="icon-div">
+                    <i id="audio-play" class="fa fa-play"></i>
+                </div>
+                <div class="icon-div">
+                    <i id="audio-pause" class="fa fa-pause"></i>
+                </div>
+                <div class="icon-div">
+                    <i id="audio-lower" class="fa fa-volume-down"></i>
+                </div>
+                <div class="icon-div">
+                    <i id="audio-increase" class="fa fa-volume-up"></i>
+                </div>
+            </div>
         </div>
         <script src="./dist/main.js"></script>
     </div>
 
-    <audio controls>
-        <source src="./dist/audio/new_york_8bit.mp3" type="audio/mpeg">
-    </audio>
 
     <footer>
         <div>
