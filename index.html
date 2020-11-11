@@ -24,7 +24,7 @@
         </div>
 
         <button class ="game-info" id="game-info"><i class="fa fa-question-circle"></i></button>
-        <div id="myModal" class="modal">
+        <div id="info-modal" class="modal">
 
             <div class="modal-content">
                 <span id="close"><i class="fa fa-times-circle"></i></span>
@@ -32,8 +32,46 @@
                     stack up skyline pieces while avoiding the pesky pigeons    
                 </p>
             </div>
+        </div>
+
+        <div id="level-modal" class="modal">
+                
+            <div class="modal-content">
+                <button id="next-level" class="start-button pulse">Next</button>
+                <!-- <span id="next-level"><i class="fas fa-arrow-circle-right"></i></i></span> -->
+                <p>Congrats on finishing level!</p>
+                <!-- Learn how to update these values -->
+                <!-- <p>Pieces Landed: </p>
+                <p>Time Complete: </p>
+                <p>Enemies Hit:  </p>
+                <p>Current Score: Score</p> -->
+                <!-- <span id="close"><i class="fa fa-times-circle"></i></span> -->
+            </div>
 
         </div>
+
+        <div id="level-modal" class="modal">
+        
+            <div class="modal-content">
+                <button id="next-level" class="start-button pulse">Next</button>
+                <!-- <span id="next-level"><i class="fas fa-arrow-circle-right"></i></i></span> -->
+                <p>Congrats on finishing level!</p>
+                <!-- Learn how to update these values -->
+                <!-- <p>Pieces Landed: </p>
+                        <p>Time Complete: </p>
+                        <p>Enemies Hit:  </p>
+                        <p>Current Score: Score</p> -->
+                <!-- <span id="close"><i class="fa fa-times-circle"></i></span> -->
+            </div>
+        </div>
+
+        <div id="final-modal" class="modal">
+        
+            <div class="modal-content">
+                <p>You won!</p>
+            </div>
+        </div>
+        
     </div>
 
     <div class="canvas-div">
@@ -74,7 +112,7 @@
                 <h1>High score:</h1>
             </div>
             <div class="start-div">
-                <button id="start" class="start-button" >Start</button>
+                <button id="start" class="start-button pulse" >Start</button>
             </div>
             <audio id="audio-player" autoplay loop>
                 <source src="./dist/audio/new_york_8bit.mp3" type="audio/mpeg">

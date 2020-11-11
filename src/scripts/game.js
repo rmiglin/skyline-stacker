@@ -18,6 +18,10 @@ const ESB_IMAGES = [document.getElementById('esb-top'),
 
 const LEVELS = [SOL_IMAGES, WTC_IMAGES, ESB_IMAGES];
 
+var level_modal = document.getElementById("level-modal");
+var final_modal = document.getElementById("final-modal");
+var next_level = document.getElementById("next-level");
+
 class Game{
     constructor(){
         this.time;
@@ -32,6 +36,7 @@ class Game{
         this.ctx = canvas.getContext("2d");
         this.paddle = new Paddle(this.canvas);
         this.blocks = [];
+        this.paused = false;
         console.log(this);
     }
 
@@ -47,14 +52,32 @@ class Game{
     
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    
+        
+        if(!this.paused){
         this.blocks.forEach(block => block.draw(this.ctx));
-        this.paddle.draw(this.ctx, this.canvas);
-    
         this.blocks.forEach(block => block.drop(this.paddle, this.canvas));
-    
+        }
+        
+        this.paddle.draw(this.ctx, this.canvas);
         this.paddle.move(this.canvas);
         if(this.allStacked()){
+            if(this.level < 2){
+                console.log("all stacked...for now");
+                level_modal.style.display = "block";
+            } else {
+                final_modal.style.display = "block";
+            }
+            this.paused = true;
+            //this.paused = true;
+            //this.paused = true;
+            // next_level.onclick = function(){
+            //     console.log(this);
+            //     this.paused = false;
+            //     level_modal.style.display = "none";
+            // }
+            //this.pauseGame();
+            // if (!this.paused){
+  
             this.level += 1;
             this.paddle.stackHeight = this.paddle.height;
             if(this.level > 2){
@@ -66,7 +89,9 @@ class Game{
                 //next level modal
                 this.blocks = this.createBlocks();
             }
+            // }
         }
+        
         
     }
 
@@ -120,6 +145,16 @@ class Game{
             return this.blocks.every(block => block.stacked);
         }
     }
+
+    // pauseGame() {
+    //     if (!this.paused) {
+    //         this = clearTimeout(this);
+    //         this.paused = true;
+    //     } else if (this.paused) {
+    //         this = setTimeout(() => this.draw, 1000 / 30);
+    //         this.paused = false;
+    //     }
+    // }
 
 }
 

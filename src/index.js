@@ -29,30 +29,45 @@ function pad(val) {
 // firebase -- high score
 let game = new Game();
 var start = document.getElementById("start");
+var next_level = document.getElementById("next-level");
 
 start.onclick = function(){
+  //this.removeClass('pulse');
+  start.classList.remove('pulse');
   audio.play();
   game.play();
   setInterval(setTime, 1000);
 };
 
-var modal = document.getElementById("myModal");
+next_level.onclick = function(){
+  console.log("clicked");
+  game.paused = false;
+  level_modal.style.display = "none"
+}  
+
+var info_modal = document.getElementById("info-modal");
 var game_info = document.getElementById("game-info");
 var close = document.getElementById("close");
 
 game_info.onclick = function() {
-  modal.style.display = "block";
+  info_modal.style.display = "block";
 }
 
 close.onclick = function() {
-  modal.style.display = "none";
+  info_modal.style.display = "none";
 }
 
 window.onclick = function(e) {
-  if (e.target == modal) {
-    modal.style.display = "none";
+  if (e.target == info_modal) {
+    info_modal.style.display = "none";
+  }
+  if (e.target == level_modal) {
+    level_modal.style.display = "none";
   }
 }
+
+var level_modal = document.getElementById("level-modal");
+var next_level = document.getElementById("next-level");
 
 var audio = document.getElementById("audio-player");
 var audio_play = document.getElementById("audio-play");

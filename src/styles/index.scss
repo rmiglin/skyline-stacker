@@ -134,7 +134,8 @@ i {
 .fa-volume-mute,
 .fa-play,
 .fa-pause,
-.fa-times-circle {
+.fa-times-circle,
+.fa-arrow-circle-right {
     color:black;
     text-decoration: none;
     font-size: 30px;
@@ -195,6 +196,7 @@ html {
 
 
 .scores-div {
+    position: relative;
     border: 2px solid black;
     height: 700px;
     margin-left: 10px;
@@ -231,19 +233,40 @@ html {
 }
 
 .start-button {
-    color:white;
+    background-color: transparent;
+    color:black;
     text-decoration: none;
     font-size: 30px;
     margin-top: 30px;
     margin-right: 30px; 
-    background-color: black;  
     border: none;
     font-family: 'sf_retroesque_fxoblique';
     letter-spacing: 0.05em;
     transition: all .2s ease-in-out;
+    outline: none;
 }
 
-.start-button:hover {
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation-iteration-count: infinite;
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.start-button:hover,
+.fa-arrow-circle-right:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
@@ -303,6 +326,9 @@ html {
 }
 
 .audio-controls-div{
+    position: absolute;
+    bottom: 2px;
+    width: 90%;
     margin-top: 5px;
     margin-bottom: 5px;
     display: flex;
@@ -344,6 +370,10 @@ html {
     justify-self: center;
     align-content: center;
     
+}
+
+.fa-arrow-circle-right:before{
+    color: black;
 }
 
 
