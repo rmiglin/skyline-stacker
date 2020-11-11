@@ -1,8 +1,22 @@
+const SOL_IMAGES = [document.getElementById('sol-torch'), 
+                document.getElementById('sol-head'), 
+                document.getElementById('sol-chest'), 
+                document.getElementById('sol-feet')];
 
+const WTC_IMAGES = [document.getElementById('wtc-top'), 
+                document.getElementById('wtc-top-middle'), 
+                document.getElementById('wtc-bottom-middle'), 
+                document.getElementById('wtc-bottom')];
 
+const ESB_IMAGES = [document.getElementById('esb-top'), 
+                document.getElementById('esb-top-middle'), 
+                document.getElementById('esb-bottom-middle'), 
+                document.getElementById('esb-bottom')];
+
+const LEVELS = [SOL_IMAGES, WTC_IMAGES, ESB_IMAGES];
 
 class FallingBlock {
-    constructor(canvas, level) {
+    constructor(canvas, level, block_num) {
         this.velocity = 4;
         this.dropHeight = Math.floor(Math.random() * (180) + canvas.height);
         this.height = 35;
@@ -10,7 +24,8 @@ class FallingBlock {
         this.rectX = this.randomStartX(canvas);
         this.rectY = canvas.height - this.dropHeight;
         this.stacked = false;
-        this.level = level;
+        this.level = LEVELS[level];
+        this.block_num = block_num;
         this.image = this.level.pop();
     }
 
