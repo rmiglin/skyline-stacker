@@ -17,6 +17,15 @@ const ESB_IMAGES = [document.getElementById('esb-top'),
                 document.getElementById('esb-bottom')];
 
 const LEVELS = [SOL_IMAGES, WTC_IMAGES, ESB_IMAGES];
+const IMAGES = [SOL_FULL, WTC_FULL, ESB_FULL];
+
+const SOL_FULL = document.getElementById("sol-full");
+const WTC_FULL = document.getElementById("wtc-full");
+const ESB_FULL = document.getElementById("esb-full");
+const LEFT_CELEB = document.getElementById("left-celeb");
+const MIDDLE_CELEB = document.getElementById("middle-celeb");
+const RIGHT_CELEB = document.getElementById("right-celeb");
+const FULL_CELEB = document.getElementById("full-celeb");
 
 var level_modal = document.getElementById("level-modal");
 var final_modal = document.getElementById("final-modal");
@@ -27,7 +36,6 @@ class Game{
         this.time;
         this.health;
         this.level = 0;
-        // this.level = LEVELS[1];
         this.score;
         this.high_score;
         this.canvas = document.getElementById('canvas');
@@ -44,13 +52,38 @@ class Game{
         this.blocks = this.createBlocks();
         document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
         document.addEventListener("keyup", this.keyUpHandler.bind(this), false);
-        //let blocks = this.createBlocks();
-        //this.blocks = this.createBlocks();
         setInterval(() => this.draw(), 20);
     }
     
     
     draw(){
+        switch(this.level) {
+            case 0:
+                SOL_FULL.style.display = "block";
+                WTC_FULL.style.display = "none";
+                ESB_FULL.style.display = "none";
+                break;
+            case 1:
+                SOL_FULL.style.display = "none";
+                WTC_FULL.style.display = "block";
+                ESB_FULL.style.display = "none";
+                break;
+            case 2:
+                SOL_FULL.style.display = "none";
+                WTC_FULL.style.display = "none";
+                ESB_FULL.style.display = "block";
+                break;
+            default:
+                SOL_FULL.style.display = "none";
+                WTC_FULL.style.display = "none";
+                ESB_FULL.style.display = "none";
+                // LEFT_CELEB.style.display = "block";
+                // MIDDLE_CELEB.style.display = "block";
+                // RIGHT_CELEB.style.display = "block";
+                FULL_CELEB.style.display = "block";
+
+
+        }
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         if(!this.paused){
@@ -68,15 +101,6 @@ class Game{
                 final_modal.style.display = "block";
             }
             this.paused = true;
-            //this.paused = true;
-            //this.paused = true;
-            // next_level.onclick = function(){
-            //     console.log(this);
-            //     this.paused = false;
-            //     level_modal.style.display = "none";
-            // }
-            //this.pauseGame();
-            // if (!this.paused){
   
             this.level += 1;
             this.paddle.stackHeight = this.paddle.height;
@@ -89,7 +113,6 @@ class Game{
                 //next level modal
                 this.blocks = this.createBlocks();
             }
-            // }
         }
         
         
@@ -109,52 +132,27 @@ class Game{
 
     keyDownHandler(e) {
         if (e.key == "Right" || e.key == "ArrowRight") {
-            //console.log(this.paddle);
             this.paddle.rightPressed = true;
         } else if (e.key == "Left" || e.key == "ArrowLeft") {
-            //console.log(this.paddle);
             this.paddle.leftPressed = true;
         }
     }
 
     keyUpHandler(e) {
         if (e.key == "Right" || e.key == "ArrowRight") {
-            //console.log(this.paddle);
             this.paddle.rightPressed = false;
         } else if (e.key == "Left" || e.key == "ArrowLeft") {
-            //console.log(this.paddle);
             this.paddle.leftPressed = false;
         }
     }
 
-    master() {
-        this.blocks = this.createBlocks();
-        this.allStacked();
-        while (!this.allStacked()){
-            this.play();
-        }
-        // console.log("done");
-    }
-
     allStacked() {
-        //console.log(this.blocks);
         if(this.blocks.length === 0){
             return false;
         } else {
-            // console.log(this.blocks.every(block => block.stacked))
             return this.blocks.every(block => block.stacked);
         }
     }
-
-    // pauseGame() {
-    //     if (!this.paused) {
-    //         this = clearTimeout(this);
-    //         this.paused = true;
-    //     } else if (this.paused) {
-    //         this = setTimeout(() => this.draw, 1000 / 30);
-    //         this.paused = false;
-    //     }
-    // }
 
 }
 

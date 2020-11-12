@@ -37,9 +37,9 @@
         <div id="level-modal" class="modal">
                 
             <div class="modal-content">
-                <button id="next-level" class="start-button pulse">Next</button>
                 <!-- <span id="next-level"><i class="fas fa-arrow-circle-right"></i></i></span> -->
                 <p>Congrats on finishing level!</p>
+                <button id="next-level" class="start-button pulse">Next</button>
                 <!-- Learn how to update these values -->
                 <!-- <p>Pieces Landed: </p>
                 <p>Time Complete: </p>
@@ -48,21 +48,6 @@
                 <!-- <span id="close"><i class="fa fa-times-circle"></i></span> -->
             </div>
 
-        </div>
-
-        <div id="level-modal" class="modal">
-        
-            <div class="modal-content">
-                <button id="next-level" class="start-button pulse">Next</button>
-                <!-- <span id="next-level"><i class="fas fa-arrow-circle-right"></i></i></span> -->
-                <p>Congrats on finishing level!</p>
-                <!-- Learn how to update these values -->
-                <!-- <p>Pieces Landed: </p>
-                        <p>Time Complete: </p>
-                        <p>Enemies Hit:  </p>
-                        <p>Current Score: Score</p> -->
-                <!-- <span id="close"><i class="fa fa-times-circle"></i></span> -->
-            </div>
         </div>
 
         <div id="final-modal" class="modal">
@@ -75,10 +60,12 @@
     </div>
 
     <div class="canvas-div">
+        <img id="full-celeb" class="full-celeb-img" src="./dist/images/celeb.gif" alt="full skyline gif">
         <div class="img-div">
-            <img class="tower-img" src="./dist/images/world-trade-center.png" alt="world trade center">
-            <!-- <img class="tower-img" src="./dist/images/statue-of-liberty.png" alt="statue of liberty"> -->
-            <!-- <img class="tower-img" src="./dist/images/empire-state-building.png" alt="empire state building"> -->
+            <img id="wtc-full" class="tower-img" src="./dist/images/world-trade-center.png" alt="world trade center">
+            <img id="sol-full" class="tower-img" src="./dist/images/statue-of-liberty.png" alt="statue of liberty">
+            <img id="esb-full" class="tower-img" src="./dist/images/empire-state-building.png" alt="empire state building">
+            <img id="left-celeb" class="left-celeb-img" src="./dist/images/left-celeb.gif" alt="left skyline gif">
         </div>
         <div class="img-pieces-div">
             <img id="sol-torch" class="img-block" src="./dist/images/statue-of-libery-pieces/statue-of-liberty-torch.png">
@@ -94,10 +81,14 @@
             <img id="esb-bottom-middle" class="img-block" src="./dist/images/empire-state-building-pieces/esb-bottom-middle.png">
             <img id="esb-bottom" class="img-block" src="./dist/images/empire-state-building-pieces/esb-bottom.png">
         </div>
-        <canvas id="canvas"></canvas>
+        <div class="draw-div">
+            <img id="middle-celeb" class="middle-celeb-img" src="./dist/images/middle-celeb.gif" alt="middle skyline gif">
+            <canvas id="canvas"></canvas>
+        </div>
         <!-- <script src="./src/index.js"></script> -->
         
         <div class="scores-div">
+            <img id="right-celeb" class="right-celeb-img" src="./dist/images/right-celeb.gif" alt="right skyline gif">
             <h1>Health: <i class="fa fa-heart"></i>
                         <i class="fa fa-heart"></i>
                         <i class="fa fa-heart"></i>

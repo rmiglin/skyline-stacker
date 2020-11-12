@@ -129,6 +129,10 @@ i {
     margin-bottom: 20px;
 }
 
+.fa-times-circle {
+    text-align: left;
+}
+
 .fa-volume-down,
 .fa-volume-up,
 .fa-volume-mute,
@@ -169,6 +173,7 @@ html {
 }
 
 .img-div {
+    position: relative;
     border: 2px solid black;
     height: 700px;
     margin-left: 10px;
@@ -190,10 +195,31 @@ html {
 }
 
 .tower-img {
+    bottom: 0;
+    display: none;
+    position: absolute;
     max-width: 100%;
     max-height: 100%;
 }
 
+.left-celeb-img,
+.middle-celeb-img,
+.right-celeb-img, 
+.full-celeb-img {
+    bottom: 0;
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 1;
+}
+.draw-div {
+    position: relative;
+}
 
 .scores-div {
     position: relative;
@@ -201,8 +227,6 @@ html {
     height: 700px;
     margin-left: 10px;
     margin-right: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
     width: 300px;
 }
 
@@ -215,6 +239,7 @@ html {
 }
 
 .canvas-div {
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -289,7 +314,7 @@ html {
 .modal {
   display: none; 
   position: fixed; 
-  z-index: 1; 
+  z-index: 2; 
   left: 0;
   top: 0;
   width: 100%; 
@@ -301,6 +326,7 @@ html {
 
 .modal-content {
   background-color: #fefefe;
+  text-align: center;
   margin: 15% auto;
   padding: 20px;
   border: none;
