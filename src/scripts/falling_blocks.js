@@ -46,12 +46,16 @@ class FallingBlock {
             // (this.rectY + this.height >= canvas.height - paddle.stackHeight && 
             //     this.rectY + this.height <= canvas.height - paddle.stackHeight + 3) &&
             this.rectX + this.width / 2 >= paddle.leftX &&
-            this.rectX + this.width / 2 <= paddle.rightX
+            this.rectX + this.width / 2 <= paddle.rightX &&
+            this.block_num === paddle.current_block_num[this.block_num - 1] + 1
         ) {
             this.rectX = paddle.X - this.width / 2;
             if(!this.stacked) {
+                //console.log(`just stacked ${this.block_num}`);
                 this.rectY = canvas.height - paddle.stackHeight - this.height;
                 paddle.stackHeight += this.height;
+                paddle.current_block_num.push(this.block_num);
+                //console.log(paddle.current_block_num);
                 this.stacked = true;
             } 
         } else {

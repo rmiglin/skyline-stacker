@@ -3,6 +3,7 @@ class Paddle{
         this.height = 12;
         this.width = 80;
         this.stackHeight = this.height;
+        this.current_block_num = [0];
         this.X = (canvas.width - this.width) / 2;
         this.leftX = this.X - this.width / 2;
         this.rightX = this.X + this.width / 2;

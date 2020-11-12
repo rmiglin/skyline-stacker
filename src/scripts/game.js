@@ -77,18 +77,13 @@ class Game{
                 SOL_FULL.style.display = "none";
                 WTC_FULL.style.display = "none";
                 ESB_FULL.style.display = "none";
-                // LEFT_CELEB.style.display = "block";
-                // MIDDLE_CELEB.style.display = "block";
-                // RIGHT_CELEB.style.display = "block";
                 FULL_CELEB.style.display = "block";
-
-
         }
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         if(!this.paused){
-        this.blocks.forEach(block => block.draw(this.ctx));
-        this.blocks.forEach(block => block.drop(this.paddle, this.canvas));
+            this.blocks.forEach(block => block.draw(this.ctx));
+            this.blocks.forEach(block => block.drop(this.paddle, this.canvas));
         }
         
         this.paddle.draw(this.ctx, this.canvas);
@@ -104,10 +99,11 @@ class Game{
   
             this.level += 1;
             this.paddle.stackHeight = this.paddle.height;
+            this.paddle.current_block_num = [0];
             if(this.level > 2){
                 //final score modal
                 //new high score if high score
-                console.log("you won!");
+                //console.log("you won!");
             } else {
                 //create modal for current score
                 //next level modal
@@ -121,10 +117,11 @@ class Game{
     createBlocks(){
         blocks = [];
         var i;
-        for (i = 0; i < 4; i ++) {
+        for (i = 1; i <= 4; i ++) {
             //pass in level to choose skyscraper
             let block_num = i;
             blocks.push(new FallingBlock(this.canvas, this.level, block_num));
+            console.log(block_num);
         }
         return blocks;
     }
