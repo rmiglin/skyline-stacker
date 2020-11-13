@@ -27,6 +27,7 @@ const MIDDLE_CELEB = document.getElementById("middle-celeb");
 const RIGHT_CELEB = document.getElementById("right-celeb");
 const FULL_CELEB = document.getElementById("full-celeb");
 
+
 var level_modal = document.getElementById("level-modal");
 var final_modal = document.getElementById("final-modal");
 var next_level = document.getElementById("next-level");
@@ -112,8 +113,9 @@ class Game{
                 final_modal.style.display = "block";
             }
             this.paused = true;
-  
-            this.level += 1;
+            if(this.level < 2){
+                this.level += 1;
+            }
             if(this.level <= 2){
                 this.startSeconds = this.totalSeconds;
             }

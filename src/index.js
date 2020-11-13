@@ -19,6 +19,7 @@ const SECONDS_LABEL = document.getElementById("seconds");
 const SCORE_LABEL = document.getElementById("score");
 const CURRENT_SCORE_LABEL = document.getElementById("current-score");
 const FINAL_SCORE_LABEL = document.getElementById("final-score");
+const LEVEL_LABEL = document.getElementById("level-num");
 //var totalSeconds = 300;
 
 
@@ -37,6 +38,7 @@ function setTime() {
   SCORE_LABEL.innerHTML = SCORE;
   CURRENT_SCORE_LABEL.innerHTML = SCORE;
   FINAL_SCORE_LABEL.innerHTML = SCORE;
+  LEVEL_LABEL.innerHTML = game.level + 1;
   SECONDS_LABEL.innerHTML = pad(game.totalSeconds % 60);
   MINUTES_LABEL.innerHTML = pad(parseInt(game.totalSeconds / 60));
 }
