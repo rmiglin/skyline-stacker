@@ -31,13 +31,19 @@ var level_modal = document.getElementById("level-modal");
 var final_modal = document.getElementById("final-modal");
 var next_level = document.getElementById("next-level");
 
+
+
 class Game{
     constructor(){
+        this.totalSeconds = 300;
+        this.startSeconds = 300;
+        this.endSeconds = 0;
         this.time;
         this.health;
         this.level = 0;
-        this.score;
-        this.high_score;
+        window.SCORE = 0;
+        this.finalScore = 0;
+        // this.high_score;
         this.canvas = document.getElementById('canvas');
         this.canvas.width = 400;
         this.canvas.height = 350;
@@ -45,6 +51,7 @@ class Game{
         this.paddle = new Paddle(this.canvas);
         this.blocks = [];
         this.paused = false;
+        this.endGame = false;
         console.log(this);
     }
 
@@ -84,25 +91,37 @@ class Game{
         if(!this.paused){
             this.blocks.forEach(block => block.draw(this.ctx));
             this.blocks.forEach(block => block.drop(this.paddle, this.canvas));
+            this.endSeconds = this.totalSeconds;
         }
         
         this.paddle.draw(this.ctx, this.canvas);
         this.paddle.move(this.canvas);
-        if(this.allStacked()){
+        if(this.allStacked() && !this.endGame){
+            console.log(`totalSeconds ${this.totalSeconds}`);
+            console.log(`endSeconds ${this.endSeconds}`);
+            console.log(`startSeconds ${this.startSeconds}`);
+            console.log(`SCORE ${SCORE}`);
+            // this.endSeconds = this.totalSeconds;
+            SCORE += Math.trunc(100/(this.startSeconds - this.endSeconds));
             if(this.level < 2){
                 console.log("all stacked...for now");
                 level_modal.style.display = "block";
             } else {
+                //this.finalScore = SCORE;
+                this.endGame = true;
                 final_modal.style.display = "block";
             }
             this.paused = true;
   
             this.level += 1;
+            if(this.level <= 2){
+                this.startSeconds = this.totalSeconds;
+            }
             this.paddle.stackHeight = this.paddle.height;
             this.paddle.current_block_num = [0];
+            this.finalScore = SCORE;
             if(this.level > 2){
                 //final score modal
-                //new high score if high score
                 //console.log("you won!");
             } else {
                 //create modal for current score
@@ -110,7 +129,6 @@ class Game{
                 this.blocks = this.createBlocks();
             }
         }
-        
         
     }
 

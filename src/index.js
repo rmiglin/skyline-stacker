@@ -1,24 +1,7 @@
 import "./styles/index.scss";
 const Game = require('./scripts/game');
 
-var minutesLabel = document.getElementById("minutes");
-var secondsLabel = document.getElementById("seconds");
-var totalSeconds = 300;
 
-function setTime() {
-  totalSeconds -= 1;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-}
-
-function pad(val) {
-  var valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
-}
 
 // create block class 
 // create paddle class 
@@ -31,12 +14,42 @@ let game = new Game();
 var start = document.getElementById("start");
 var next_level = document.getElementById("next-level");
 
+const MINUTES_LABEL = document.getElementById("minutes");
+const SECONDS_LABEL = document.getElementById("seconds");
+const SCORE_LABEL = document.getElementById("score");
+const CURRENT_SCORE_LABEL = document.getElementById("current-score");
+const FINAL_SCORE_LABEL = document.getElementById("final-score");
+//var totalSeconds = 300;
+
+
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+function setTime() {
+  game.totalSeconds -= 1;
+  SCORE_LABEL.innerHTML = SCORE;
+  CURRENT_SCORE_LABEL.innerHTML = SCORE;
+  FINAL_SCORE_LABEL.innerHTML = SCORE;
+  SECONDS_LABEL.innerHTML = pad(game.totalSeconds % 60);
+  MINUTES_LABEL.innerHTML = pad(parseInt(game.totalSeconds / 60));
+}
+
+
 start.onclick = function(){
   //this.removeClass('pulse');
   start.classList.remove('pulse');
   audio.play();
   game.play();
-  setInterval(setTime, 1000);
+  if(!game.paused && !game.endGame){
+    setInterval(setTime, 1000);
+  }
 };
 
 next_level.onclick = function(){

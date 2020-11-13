@@ -55,6 +55,7 @@ class FallingBlock {
                 this.rectY = canvas.height - paddle.stackHeight - this.height;
                 paddle.stackHeight += this.height;
                 paddle.current_block_num.push(this.block_num);
+                SCORE += 40;
                 //console.log(paddle.current_block_num);
                 this.stacked = true;
             } 
