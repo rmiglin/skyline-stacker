@@ -34,4 +34,4 @@ class Bird{
     }
 }
 
-module.exports = Paddle;
+module.exports = Bird;

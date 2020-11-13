@@ -158,6 +158,9 @@ canvas {
     width: 800px;
     margin-left: 10px;
     margin-right: 10px;
+    background: url('../../dist/images/skyline_background3.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 body {
@@ -202,9 +205,6 @@ html {
     max-height: 100%;
 }
 
-.left-celeb-img,
-.middle-celeb-img,
-.right-celeb-img, 
 .full-celeb-img {
     bottom: 0;
     display: none;
@@ -217,6 +217,12 @@ html {
     padding-right: 20px;
     z-index: 1;
 }
+
+.cloud-img {
+    height: 30px;
+    width: 50px;
+}
+
 .draw-div {
     position: relative;
 }

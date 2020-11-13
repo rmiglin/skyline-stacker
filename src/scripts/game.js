@@ -1,3 +1,4 @@
+const Cloud = require('./cloud');
 const FallingBlock = require('./falling_blocks');
 const Paddle = require('./paddle');
 
@@ -53,11 +54,13 @@ class Game{
         this.blocks = [];
         this.paused = false;
         this.endGame = false;
+        this.clouds = [];
         console.log(this);
     }
 
     play(){
         this.blocks = this.createBlocks();
+        this.clouds = this.createClouds();
         document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
         document.addEventListener("keyup", this.keyUpHandler.bind(this), false);
         setInterval(() => this.draw(), 20);
@@ -92,17 +95,15 @@ class Game{
         if(!this.paused){
             this.blocks.forEach(block => block.draw(this.ctx));
             this.blocks.forEach(block => block.drop(this.paddle, this.canvas));
+            this.clouds.forEach(cloud => cloud.draw(this.ctx));
+            this.clouds.forEach(cloud => cloud.drift(this.canvas));
             this.endSeconds = this.totalSeconds;
         }
-        
+
         this.paddle.draw(this.ctx, this.canvas);
         this.paddle.move(this.canvas);
         if(this.allStacked() && !this.endGame){
-            console.log(`totalSeconds ${this.totalSeconds}`);
-            console.log(`endSeconds ${this.endSeconds}`);
-            console.log(`startSeconds ${this.startSeconds}`);
-            console.log(`SCORE ${SCORE}`);
-            // this.endSeconds = this.totalSeconds;
+
             SCORE += Math.trunc(100/(this.startSeconds - this.endSeconds));
             if(this.level < 2){
                 console.log("all stacked...for now");
@@ -111,6 +112,7 @@ class Game{
                 //this.finalScore = SCORE;
                 this.endGame = true;
                 final_modal.style.display = "block";
+                FULL_CELEB.style.display = "block";
             }
             this.paused = true;
             if(this.level < 2){
@@ -129,6 +131,7 @@ class Game{
                 //create modal for current score
                 //next level modal
                 this.blocks = this.createBlocks();
+                this.clouds = this.createClouds();
             }
         }
         
@@ -144,6 +147,15 @@ class Game{
             console.log(block_num);
         }
         return blocks;
+    }
+
+    createClouds(){
+        clouds = [];
+        var i;
+        for(i = 0; i < 10; i ++){
+            clouds.push(new Cloud(this.canvas));
+        }
+        return clouds;
     }
 
 
