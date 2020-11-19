@@ -1,5 +1,5 @@
 # Skyline Stacker
-
+![Artsy Screenshot](/dist/images/game_screenshot.png)
 Welcome to Skyline Stacker! The object of the game is to stack as many horizontal slices of iconic NYC skyscrapers on top of one another while avoiding the subway warnings, pigeons, and rats. 
 
 
