@@ -3,7 +3,7 @@
 Welcome to Skyline Stacker! The object of the game is to stack as many horizontal slices of iconic NYC skyscrapers on top of one another while avoiding the subway warnings, pigeons, and rats. 
 
 
-# 1. Background and Overview
+# Background and Overview
 My JS project is a game akin to a sandwich stacking game where a paddle at the bottom of the screen holds up a base layer and must catch other (good) falling pieces onto their growing stack while avoiding bad ones. Each level will get increasingly faster and more difficult and players will be rewarded for building skyscrapers more quickly and penalized for accidentally stacking pigeons or rats. The game is built using Javscript's Canvas API.
 
 ### How to Play
@@ -19,23 +19,23 @@ Rendering of shapes is done within Canvas to draw the Paddle, Clouds, and skyscr
 
 The audio element is created with HTML's audio built element. I styled over it by hiding the original element and creating buttons to link to the HTML audio.
 
-# 2. Functionality and MVPs 
+* Functionality and MVPs 
 Splash page, Randomized Falling piece controlling moving paddle, build template, score + high scores + levels
   
-# 3. Wireframes 
+* Wireframes 
 https://wireframe.cc/FgcKTC
   
-# 4. Architecture and Technology 
+* Architecture and Technology 
 Canvas for graphics
   
-# 5. Implementation Timeline 
+* Implementation Timeline 
   Monday: basic layout of landing page containers
   Tuesday: falling skyscraper pieces functionality completed
   Wednesday: controls and score updates working
   Thursday: styling of skyscrapers and game page
   Friday: High score feature working with skyscraper fun facts 
   
-# 6. (Bonus Features) 
+* (Bonus Features) 
   Fun Facts about each skyscraper
   Power-ups
   Changeable themes
