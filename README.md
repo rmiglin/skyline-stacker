@@ -20,23 +20,27 @@ Rendering of shapes is done within Canvas to draw the Paddle, Clouds, and skyscr
 The audio element is created with HTML's audio built element. I styled over it by hiding the original element and creating buttons to link to the HTML audio.
 
 ### Functionality and MVPs 
-Splash page, Randomized Falling piece controlling moving paddle, build template, score + high scores + levels
+* Splash page
+* Randomized Falling pieces
+* Controlling moving paddle
+* build template
+* score + high scores + levels
   
 ### Wireframes 
 https://wireframe.cc/FgcKTC
   
 ### Architecture and Technology 
-Canvas API for graphics
-Firebase for high score persistence
+* Canvas API for graphics
+* Firebase for high score persistence
   
 ### Implementation Timeline 
-  Monday: basic layout of landing page containers
-  Tuesday: falling skyscraper pieces functionality completed
-  Wednesday: controls and score updates working
-  Thursday: styling of skyscrapers and game page
-  Friday: High score feature working with skyscraper fun facts 
+* Monday: basic layout of landing page containers
+* Tuesday: falling skyscraper pieces functionality completed
+* Wednesday: controls and score updates working
+* Thursday: styling of skyscrapers and game page
+* Friday: High score feature working with skyscraper fun facts 
   
 ### (Bonus Features) 
-  Fun Facts about each skyscraper
-  Power-ups
-  Changeable themes
+* Fun Facts about each skyscraper
+* Power-ups
+* Changeable themes
