@@ -4,7 +4,7 @@ Welcome to Skyline Stacker! The object of the game is to stack as many horizonta
 
 
 # 1. Background and Overview
-My JS project is a game akin to a sandwich stacking game where a paddle at the bottom of the screen holds up a base layer and must catch other (good) falling pieces onto their growing stack while avoiding bad ones. Each level will get increasingly faster and more difficult and players will be rewarded for building skyscrapers more quickly and penalized for accidentally stacking pigeons or rats. The game is build using Canvas and Javscript.
+My JS project is a game akin to a sandwich stacking game where a paddle at the bottom of the screen holds up a base layer and must catch other (good) falling pieces onto their growing stack while avoiding bad ones. Each level will get increasingly faster and more difficult and players will be rewarded for building skyscrapers more quickly and penalized for accidentally stacking pigeons or rats. The game is built using Javscript's Canvas API.
 
 ### How to Play
 
